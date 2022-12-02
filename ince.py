@@ -80,18 +80,6 @@ class ince():
     if nan in gpulist:
         gpulist.remove(nan)
     gpulist.sort(reverse=True)
-    #unique_gpus.sort(reverse=True)
-    #f = open("incegpu.txt", "w")
-    #gpus = open('gpus.txt', 'r')
-    #Lines = gpus.readlines()
-    """ gpuslist=[]
-    for line in Lines:
-        gpuslist.append(line.strip())
-        gpuslist.sort(reverse=True) """
-    """ with open(r'gpusi.txt', 'w') as fp:
-        for item in unique_gpus:
-            fp.write("%s\n" % item)
-    dfince = pd.DataFrame(pclistince) """
     pclistinceg=[]
     for i in pclistince:
         try:
@@ -100,31 +88,11 @@ class ince():
             pclistinceg.append(i)
         except:
             continue
-    """ dfinceg = pd.DataFrame(pclistinceg)
-    dfinceg.to_csv("inceg.csv", sep='\t', encoding='utf-8')
-    dfinceg.to_csv("inceg_csv", sep='\t', encoding='utf-8')
-    unique_gpus = list(set(dfinceg["gpu"])) """
     gpulistg=[]
     for i in pclistinceg:
         if i["gpu"] not in gpulistg:
             gpulistg.append(i["gpu"])
     gpulistg.sort(reverse=True)
-    """ f = open("incegpug.txt", "w")
-    with open(r'incegpug.txt', 'w') as fp:
-        for item in unique_gpusg:
-            # write each item on a new line
-            fp.write("%s\n" % item) """
-    """ nvidialist=[]
-    amdlist=[]
-    for i in pclistince:
-        if  ("nan" not in str(i["gpu"])) and ("RX" not in str(i["gpu"])):
-            nvidialist.append(i)
-        elif ("nan" not in str(i["gpu"])) and ("RX" in str(i["gpu"])):
-            amdlist.append(i)
-    sortednvidia = sorted(nvidialist, key=lambda d: d['price'])
-    sortedamd = sorted(amdlist, key=lambda d: d['price'])
-    dfince.to_csv("incehesap.csv", sep='\t', encoding='utf-8')
-    dfince.to_csv("incehesap_csv", sep='\t', encoding='utf-8') """
     db = pypyodbc.connect(
     "Driver={SQL Server};"
     "Server=DESKTOP-ADILVNP\SQLEXPRESS;"
