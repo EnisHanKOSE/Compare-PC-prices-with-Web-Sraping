@@ -70,8 +70,6 @@ class itopya():
             except:
                 break
 
-    """ dfitopya = pd.DataFrame(pclistitopya) """
-
     pclistitopyag=[]
     for i in pclistitopya:
         try:
@@ -80,14 +78,6 @@ class itopya():
            pclistitopyag.append(i)
         except:
            continue
-
-    """ dfitopyag = pd.DataFrame(pclistitopyag)
-
-    dfitopyag.to_csv("itopyag.csv", sep='\t', encoding='utf-8')
-    dfitopyag.to_csv("itopyag_csv", sep='\t', encoding='utf-8')
-
-    dfitopya.to_csv("itopya.csv", sep='\t', encoding='utf-8')
-    dfitopya.to_csv("itopya_csv", sep='\t', encoding='utf-8') """
 
     unique_gpus=[]
     for i in pclistitopya:
@@ -99,38 +89,7 @@ class itopya():
     for i in unique_gpus:
         if i not in newgpulist:
             newgpulist.append(i)
-    """ f = open("itopyagpu.txt", "w")
-    with open(r'itopyagpu.txt', 'w') as fp:
-        for item in unique_gpus:
-            fp.write("%s\n" % item) """
-
-    """ nvidialist=[]
-    amdlist=[]
-    for i in pclistitopya:
-        if  ("nan" not in str(i["gpu"])) and ("RX" not in str(i["gpu"])):
-            nvidialist.append(i)
-        elif ("nan" not in str(i["gpu"])) and ("RX" in str(i["gpu"])):
-            amdlist.append(i)
-
-    sortednvidia = sorted(nvidialist, key=lambda d: d['price'])
-    sortedamd = sorted(amdlist, key=lambda d: d['price']) """
-
-    """ file1 = open('incegpu.txt', 'r')
-    file2 = open("itopyagpu.txt", "r")
-    Lines1 = file1.readlines()
-    Lines2 = file2.readlines()
-    thegpulist=[]
-    for line1 in Lines1:
-        if line1 not in Lines2:
-            thegpulist.append(line1.strip())
-    for line2 in Lines2:
-        thegpulist.append(line2.strip())
-    thegpulist.sort(reverse=True)
-    f = open("thegpu.txt", "w")
-    file2 = open("thegpu.txt", "r")
-    with open(r'thegpu.txt', 'w') as fp:
-        for item in thegpulist:
-            fp.write("%s\n" % item) """
+            
     db = pypyodbc.connect(
     "Driver={SQL Server};"
     "Server=DESKTOP-ADILVNP\SQLEXPRESS;"
