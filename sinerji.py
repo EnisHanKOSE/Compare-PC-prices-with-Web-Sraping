@@ -56,15 +56,6 @@ class sinerji():
         if i["gpu"]=="Oyun":
             i["gpu"]="nan"
 
-    """ file1 = open('thegpu.txt', 'r')
-    Lines = file1.readlines()
-    thegpulist=[]
-    for i in Lines:
-        i=i.strip().split(" ")
-        i="".join(i)
-        thegpulist.append(i)
-    thegpulist.sort(reverse=True) """
-
     thegpulist=itopya.newgpulist
     for i in thegpulist:
         try:
@@ -74,7 +65,6 @@ class sinerji():
         except:
            continue
 
-    """ dfsinerji = pd.DataFrame(pclistsinerji) """
     uniquegpus=[]
     for i in pclistsinerji:
         if i["gpu"] not in uniquegpus:
@@ -82,32 +72,13 @@ class sinerji():
     if nan in uniquegpus:
         uniquegpus.remove(nan)
     uniquegpus.sort(reverse=True)
-    """ with open(r'sinerji.txt', 'w') as fp:
-        for item in unique_gpus:
-            fp.write("%s\n" % item) """
     
     for i in uniquegpus:
         if i not in thegpulist:
             thegpulist.append
 
-    """ file1 = open('sinerji.txt', 'r')
-    Lines = file1.readlines()
-    sinerjilist=[]
-    for i in Lines:
-        sinerjilist.append(i.strip())
-    sinerjilist.sort(reverse=True)
-
-    for i in sinerjilist:
-        if i not in thegpulist:
-            thegpulist.append(i) """
-
     thegpulist.sort(reverse=True)
-    """ with open(r'thegpug.txt', 'w') as fp:
-        for item in thegpulist:
-            fp.write("%s\n" % item) """
 
-    """ dfsinerji.to_csv("sinerji.csv", sep='\t', encoding='utf-8')
-    dfsinerji.to_csv("sinerji_csv", sep='\t', encoding='utf-8') """
     db = pypyodbc.connect(
     "Driver={SQL Server};"
     "Server=DESKTOP-ADILVNP\SQLEXPRESS;"
